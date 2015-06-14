@@ -13,26 +13,26 @@
 */
 // 饿汉式
 public class Singleton{
-	private static final Singleton singleton = new Singleton();
+    private static final Singleton singleton = new Singleton();
 
-	private Singleton(){}
+    private Singleton(){}
 
-	public static Singleton getInstance(){
-		return singleton;
-	}
+    public static Singleton getInstance(){
+        return singleton;
+    }
 }
 
 // 懒汉式
 public class Singleton{
-	private static Singleton singleton = null;
+    private static Singleton singleton = null;
 
-	private Singleton(){}
+    private Singleton(){}
 
-	public static Singleton getInstance(){
-		if(singleton == null)
-			singleton = new Singleton();
-		return singleton;
-	}
+    public static Singleton getInstance(){
+        if(singleton == null)
+            singleton = new Singleton();
+        return singleton;
+    }
 }
 /*
 多线程环境下
@@ -42,36 +42,36 @@ public class Singleton{
 */
 // 双重加锁
 public class Singleton(){
-	private static Singleton singleton = null;
+    private static Singleton singleton = null;
 
-	private Singleton(){}
+    private Singleton(){}
 
-	public static Singleton getInstance(){
-		if(singleton == null){
-			synchronized(Singleton.class){
-				if(singleton == null)
-					singleton = new Singleton();
-			}
-		}
-		return singleton;
-	}
+    public static Singleton getInstance(){
+        if(singleton == null){
+            synchronized(Singleton.class){
+                if(singleton == null)
+                    singleton = new Singleton();
+            }
+        }
+        return singleton;
+    }
 }
 
 // singleton = new Singleton()非原子操作，volatile禁止指令重排序
 public class Singleton(){
-	private volatile static Singleton singleton = null;
+    private volatile static Singleton singleton = null;
 
-	private Singleton(){}
+    private Singleton(){}
 
-	public static Singleton getInstance(){
-		if(singleton == null){
-			synchronized(Singleton.class){
-				if(singleton == null)
-					singleton = new Singleton();
-			}
-		}
-		return singleton;
-	}
+    public static Singleton getInstance(){
+        if(singleton == null){
+            synchronized(Singleton.class){
+                if(singleton == null)
+                    singleton = new Singleton();
+            }
+        }
+        return singleton;
+    }
 }
 
 /*

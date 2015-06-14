@@ -5,37 +5,37 @@
 */
 
 public class ReplaceBlank{
-	public static void main(String[] args) {
-		String str = "we are happy.";
-		System.out.println(replaceBlank(str));
-	}
+    public static void main(String[] args) {
+        String str = "we are happy.";
+        System.out.println(replaceBlank(str));
+    }
 
-	private static String replaceBlank(String str){
-		char [] ch = str.toCharArray();
-		int originalLength = ch.length;
-		int numberofBlank = 0;
-		for(char c:ch){
-			if(c == ' ')
-				++numberofBlank;
-		}
+    private static String replaceBlank(String str){
+        char [] ch = str.toCharArray();
+        int originalLength = ch.length;
+        int numberofBlank = 0;
+        for(char c:ch){
+            if(c == ' ')
+                ++numberofBlank;
+        }
 
-		int newLength = originalLength + numberofBlank * 2;
+        int newLength = originalLength + numberofBlank * 2;
 
-		int indexofOriginal = originalLength - 1;
-		int indexofNew = newLength - 1;
+        int indexofOriginal = originalLength - 1;
+        int indexofNew = newLength - 1;
 
-		char [] result = new char [newLength];
-		while(indexofOriginal >= 0){
-			if(ch[indexofOriginal] == ' '){
-				result[indexofNew--] = '0';
-				result[indexofNew--] = '2';
-				result[indexofNew--] = '%';
-			}
-			else{
-				result[indexofNew--] = ch[indexofOriginal];
-			}
-			--indexofOriginal;
-		}
-		return new String(result);
-	}
+        char [] result = new char [newLength];
+        while(indexofOriginal >= 0){
+            if(ch[indexofOriginal] == ' '){
+                result[indexofNew--] = '0';
+                result[indexofNew--] = '2';
+                result[indexofNew--] = '%';
+            }
+            else{
+                result[indexofNew--] = ch[indexofOriginal];
+            }
+            --indexofOriginal;
+        }
+        return new String(result);
+    }
 }
